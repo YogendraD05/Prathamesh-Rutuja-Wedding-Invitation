@@ -75,4 +75,13 @@ window.onload = function() {
     }
 };
 
+function openDirections() {
+    const destination = "Kumarsen Mangal Karyalay, Patas";
+
+    window.open(
+        `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`,
+        "_blank"
+    );
+}
+
 
