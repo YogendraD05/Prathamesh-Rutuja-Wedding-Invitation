@@ -1,0 +1,247 @@
+:root {
+    --burgundy: #5e0b15;
+    --gold-gradient: linear-gradient(90deg, #b88a44, #e2c07d, #b88a44);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #3a060b;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Background */
+.cover-container {
+    min-height: 100vh;
+    background: radial-gradient(#8b805c 0.5px, transparent 0.8px);
+    background-size: 60px 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #fdf5e6;
+}
+
+/* Glow Lines */
+.glow-container,
+.glow-container1 {
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.glow-container { top: 5%; }
+.glow-container1 { bottom: 5%; }
+
+.glow-line {
+    height: 2px;
+    flex: 1;
+    background: linear-gradient(to right, transparent, #c19b67);
+}
+
+.glow-line:last-child {
+    background: linear-gradient(to left, transparent, #c19b67);
+}
+
+/* Layout */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Images */
+.left img,
+.right img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Content */
+.content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.blessings {
+    letter-spacing: 4px;
+    font-size: 12px;
+    color: #d4af37;
+}
+
+.names {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    color: #f4deb5;
+}
+
+.script {
+    font-family: 'Great Vibes', cursive;
+    font-size: 32px;
+    color: #d4af37;
+}
+
+/* Date */
+.date-box {
+    margin: 20px 0;
+}
+
+.day {
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+/* Button */
+.enter-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--gold-gradient);
+    color: black;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.enter-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Petals */
+.petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff758c;
+    border-radius: 150% 0;
+    top: -20px;
+    animation: fall 7s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(110vh); }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 1024px) {
+    .left img, .right img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .names {
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .left img, .right img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .names {
+        font-size: 36px;
+    }
+
+    .script {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .left img, .right img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .names {
+        font-size: 28px;
+    }
+
+    .script {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .glow-container,
+    .glow-container1 {
+        width: 60%;
+        max-width: 220px;  /* limit size */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .glow-container,
+    .glow-container1 {
+        position: static;   /* 🔥 main fix */
+        transform: none;
+        width: 70%;
+        margin: 20px auto;
+    }
+
+    .cover-container {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 40px;
+    }
+
+}
+
+.glow-line {
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, gold, transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    100% {
+        left: 100%;
+    }
+}
+
+.content {
+    animation: fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
