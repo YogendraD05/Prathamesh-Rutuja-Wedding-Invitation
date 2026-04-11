@@ -78,10 +78,16 @@ window.onload = function() {
 function openDirections() {
     const destination = "Kumarsen Mangal Karyalay, Patas";
 
-    window.open(
-        `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`,
-        "_blank"
-    );
+    const appUrl = `google.navigation:q=${encodeURIComponent(destination)}`;
+    const webUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}&travelmode=driving`;
+
+    // Try opening app first
+    window.location.href = appUrl;
+
+    // Fallback after 1 second if app doesn't open
+    setTimeout(() => {
+        window.location.href = webUrl;
+    }, 1000);
 }
 
 
